@@ -37,7 +37,8 @@ function checkAnswer(currentLevel) {
             $("body").removeClass("game-over");
         }, 200)
         $("#level-title").text("Game Over, Press Any Key to Restart");
-        new Audio("./sounds/wrong.mp3").play();
+        var audio = new Audio("./sounds/wrong.mp3");
+        audio.play();
         startOver();
     }
 }
@@ -52,20 +53,15 @@ function nextSequence() {
     level++;        
     $("#level-title").text("LEVEL " + level);
     var rndNum = Math.floor(4*Math.random());
-    console.log(rndNum);
     rndColor = buttonColors[rndNum];
     gamePattern.push(rndColor);
-    console.log(gamePattern);
     $("#" + rndColor).fadeOut(100).fadeIn(100);
     playSound(rndColor);
 }
 
 $(".btn").click(function(event) {
     if (level !== 0) {
-        console.log(rndColor);   
         var userChosen = event.target.id;
-        console.log(userChosen);
-        console.log(rndColor === userChosen);
         userClickPattern.push(userChosen);
         playSound(userChosen);
         animatePress(userChosen);
