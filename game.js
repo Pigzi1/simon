@@ -37,7 +37,7 @@ function checkAnswer(currentLevel) {
             $("body").removeClass("game-over");
         }, 200)
         $("#level-title").text("Game Over, Press Any Key to Restart");
-        new Audio("./sounds/wrong.mp3")
+        new Audio("./sounds/wrong.mp3").play();
         startOver();
     }
 }
